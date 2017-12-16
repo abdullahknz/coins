@@ -112,7 +112,7 @@
             </thead>
 
             <tbody>
-                <tr cc-auto-refresh-fn="reload()" ng-repeat="coin in sushi | orderBy:sortType:sortReverse | filter:searchFish">
+                <tr cc-auto-refresh-fn="reload()" ng-repeat="coin in sushi">
                     <th>{{coin.symbol}}</th>
                     <th>{{coin.name}}</th>
                     <th>${{coin.market_cap_usd | number}}</th>
