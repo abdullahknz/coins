@@ -2,6 +2,7 @@
 angular.module('sortApp', [])
 
 .controller('mainController', function($scope,$http,$timeout) {
+  
     $scope.reload = function () {
         $http.get("https://api.coinmarketcap.com/v1/ticker/")
         .then(function(response) {
