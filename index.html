@@ -7,10 +7,14 @@
     <meta charset="UTF-8">
     <title>Musluman Tacirler Coins</title>
 
-    <!-- CSS -->
+    <!-- CSS JS -->
     <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  
     <style>
         body {
             padding-top: 50px;
@@ -55,14 +59,14 @@
         </div>
     </nav>
     <div class="container" ng-app="sortApp" ng-controller="mainController">
-
-        <!--  <div class="alert alert-info">
-          <p>Sort Type: {{ sortType }}</p>
-          <p>Sort Reverse: {{ sortReverse }}</p>
-          <p>Search Query: {{ searchFish }}</p>
-        </div> -->
         <br>
-        <br>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Hepsi</a></li>
+            <li><a data-toggle="tab" href="#menu1">Bizim Coinler</a></li>
+          </ul>
+       <br>
+        <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
         <form>
             <div class="form-group">
                 <div class="input-group">
@@ -74,7 +78,7 @@
             </div>
         </form>
 
-        <table class="table table-bordered table-striped">
+        <table id="coins" class="table table-bordered table-striped table-list">
 
             <thead>
                 <tr>
@@ -127,14 +131,79 @@
             </tbody>
 
         </table>
-
-        <p class="text-center">
-            by
-            <a href="http://www.abdullahkanza.com" target="_blank">Abdullah Kanza</a>
-        </p>
-
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Search a coin..." ng-model="searchFish">
+                    </div>
+                </div>
+            </form>
+    
+            <table id="coins" class="table table-bordered table-striped table-list">
+    
+                <thead>
+                    <tr>
+                        <td>
+                            Symbol
+                        </td>
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Market Cap
+                        </td>
+                        <td>
+                            Price
+                        </td>
+                        <td>
+                            Volume(24h)
+                        </td>
+                        <td>
+                            Available Supply
+                        </td>
+                        <td>
+                            Change(Percent 1h)
+                        </td>
+                        <td>
+                            Change(Percent 24h)
+                        </td>
+                        <td>
+                            Change(Percent 7d)
+                        </td>
+                        <td>
+                            Total Supply
+                        </td>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr cc-auto-refresh-fn="specialcoins()" ng-repeat="coin in specialCoins | filter:searchFish">
+                        <th>{{coin.symbol}}</th>
+                        <th>{{coin.name}}</th>
+                        <th>${{coin.market_cap_usd | number}}</th>
+                        <th>${{coin.price_usd | number}}</th>
+                        <th>${{coin.24h_volume_usd | number}}</th>
+                        <th>{{coin.available_supply}}</th>
+                        <th>{{coin.percent_change_1h}}</th>
+                        <th>{{coin.percent_change_24h}}</th>
+                        <th>{{coin.percent_change_7d}}</th>
+                        <th>{{coin.total_supply}}</th>
+                    </tr>
+                </tbody>
+    
+            </table>
+          </div>
+        </div>
     </div>
-
+    <p class="text-center">
+        by
+        <a href="http://www.abdullahkanza.com" target="_blank">Abdullah Kanza</a>
+    </p>
 </body>
 
 </html>
